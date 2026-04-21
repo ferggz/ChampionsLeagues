@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Champions</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <h1>Clasificación</h1>
+
+    <table>
+        <tr>
+            <th>Equipo</th>
+            <th>Puntos</th>
+            <th>GF</th>
+            <th>GC</th>
+        </tr>
+
+       {% for team in teams %} 
+       <tr>
+            <td>
+               <a href="/team/{{ team.id }}">
+                    {{ team.name }}
+                </a>
+            </td>
+            <td>{{ team.points }}</td>
+            <td>{{ team.gf }}</td>
+            <td>{{ team.ga }}</td>
+       </tr>
+       {% endfor %}
+    </table>
+    
+</body>
+</html>
