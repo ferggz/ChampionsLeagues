@@ -10,22 +10,35 @@
 
     <table>
         <tr>
+            <th>#</th>
             <th>Equipo</th>
-            <th>Puntos</th>
+            <th>PJ</th>
+            <th>PG</th>
+            <th>PE</th>
+            <th>PP</th>
             <th>GF</th>
             <th>GC</th>
+            <th>DG</th>
+            <th>Pts</th>
         </tr>
 
        {% for team in teams %} 
        <tr>
+            <td>{{ loop.index }}</td>
             <td>
-               <a href="/team/{{ team.id }}">
+               <a href="/team/{{ team.id }}" class="team link">
+                <img src="/static/logos/{{ team.logo }}" class="team-logo">
                     {{ team.name }}
                 </a>
             </td>
-            <td>{{ team.points }}</td>
+            <td>{{ team.pj }}</td>
+            <td>{{ team.pg }}</td>
+            <td>{{ team.pe }}</td>
+            <td>{{ team.pp }}</td>
             <td>{{ team.gf }}</td>
             <td>{{ team.ga }}</td>
+            <td>{{ team.gf - team.ga }}</td>
+            <td>{{ team.points }}</td>
        </tr>
        {% endfor %}
     </table>

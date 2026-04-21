@@ -7,15 +7,21 @@
 <body>
 
     <h1>{{ team.name }}</h1>
+    <img src="/static/logos/{{ team.logo }}" class="team-logo-large">
 
-    <div>
-        <p><strong>Puntos:</strong> {{ team.points }}</p>
+    <div style="background: white; width: 320px; margin: auto; padding: 20px; border-radius: 8px;">
+        <p><strong>PJ:</strong> {{ team.pj }}</p>
+        <p><strong>PG:</strong> {{ team.pg }}</p>
+        <p><strong>PE:</strong> {{ team.pe }}</p>
+        <p><strong>PP:</strong> {{ team.pp }}</p>
         <p><strong>GF:</strong> {{ team.gf }}</p>
-        <p><strong>GA:</strong> {{ team.ga }}</p>
+        <p><strong>GC:</strong> {{ team.ga }}</p>
+        <p><strong>DG:</strong> {{ team.gf - team.ga }}</p>
+        <p><strong>Puntos:</strong> {{ team.points }}</p>
     </div>
 
     <br>
-    
+
     <a href="/">Volver</a>
     
 </body>
