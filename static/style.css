@@ -71,3 +71,81 @@ a:hover {
     border-radius: 6px;
     font-size: 16px;
 }
+
+.qualified-octavos td:first-child {
+    border-left: 6px solid #28a745;
+}
+
+.qualified-playoff td:first-child {
+    border-left: 6px solid #ffc107;
+}
+
+.eliminated td:first-child {
+    border-left: 6px solid #dc3545;
+}
+
+.legend {
+    width: 85%;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 14px;
+}
+
+.legend p {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.box {
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    border-radius: 3px;
+}
+
+.octavos {
+    background-color: #28a745;
+}
+
+.playoff {
+    background-color: #ffc107;
+}
+
+.out {
+    background-color: #dc3545;
+}
+
+th[data-column] {
+    cursor: pointer;
+}
+
+th[data-column]:hover {
+    background-color: #222;
+}
+
+th[data-column] {
+    cursor: pointer;
+    position: relative;
+}
+
+th[data-column]::after {
+    content: "⇅";
+    font-size: 10px;
+    margin-left: 5px;
+    opacity: 0.5;
+}
+
+th[data-column]::after {
+    content: "⇅";
+    font-size: 10px;
+    margin-left: 5px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+th[data-column]:hover::after {
+    opacity: 0.7;
+}
