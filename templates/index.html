@@ -8,6 +8,10 @@
 
     <h1>Clasificación</h1>
 
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Buscar equipo...">
+    </div>
+
     <table>
         <tr>
             <th>#</th>
@@ -23,12 +27,12 @@
         </tr>
 
        {% for team in teams %} 
-       <tr>
+       <tr class="team-row">
             <td>{{ loop.index }}</td>
             <td>
-               <a href="/team/{{ team.id }}" class="team link">
-                <img src="/static/logos/{{ team.logo }}" class="team-logo">
-                    {{ team.name }}
+               <a href="/team/{{ team.id }}" class="team-link">
+                <img src="/static/logos/{{ team.logo }}" alt="{{ team.name }} logo" class="team-logo">
+                <span>{{ team.name }}</span>
                 </a>
             </td>
             <td>{{ team.pj }}</td>
@@ -42,6 +46,25 @@
        </tr>
        {% endfor %}
     </table>
-    
+
+<script>
+    const searchInput = document.getElementById("searchInput");
+    const rows = document.querySelectorAll(".team-row");
+
+    searchInput.addEventListener("input", function () {
+        const searchText = searchInput.value.toLowerCase();
+
+        rows.forEach(function (row) {
+            const teamName = row.querySelector(".team-link span").textContent.toLowerCase();
+
+            if (teamName.includes(searchText)) {
+                row.style.display = "";
+            } else {
+                row.style.display = "none";
+            }
+        });
+    });
+</script>
+
 </body>
 </html>
