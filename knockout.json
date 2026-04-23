@@ -1,0 +1,265 @@
+{
+  "playoffs": [
+    {
+      "team1": "Monaco",
+      "team2": "Paris Saint-Germain",
+      "leg1_score1": 2,
+      "leg1_score2": 3,
+      "leg2_score1": 2,
+      "leg2_score2": 2,
+      "aggregate1": 4,
+      "aggregate2": 5,
+      "winner": "Paris Saint-Germain"
+    },
+    {
+      "team1": "Galatasaray",
+      "team2": "Juventus",
+      "leg1_score1": 5,
+      "leg1_score2": 2,
+      "leg2_score1": 3,
+      "leg2_score2": 2,
+      "leg2_extra_time": true,
+      "aggregate1": 7,
+      "aggregate2": 5,
+      "winner": "Galatasaray"
+    },
+    {
+      "team1": "Benfica",
+      "team2": "Real Madrid",
+      "leg1_score1": 0,
+      "leg1_score2": 1,
+      "leg2_score1": 1,
+      "leg2_score2": 2,
+      "aggregate1": 1,
+      "aggregate2": 3,
+      "winner": "Real Madrid"
+    },
+    {
+      "team1": "Borussia Dortmund",
+      "team2": "Atalanta",
+      "leg1_score1": 2,
+      "leg1_score2": 0,
+      "leg2_score1": 1,
+      "leg2_score2": 4,
+      "aggregate1": 3,
+      "aggregate2": 4,
+      "winner": "Atalanta"
+    },
+    {
+      "team1": "Qarabağ",
+      "team2": "Newcastle",
+      "leg1_score1": 1,
+      "leg1_score2": 6,
+      "leg2_score1": 2,
+      "leg2_score2": 3,
+      "aggregate1": 3,
+      "aggregate2": 9,
+      "winner": "Newcastle"
+    },
+    {
+      "team1": "Club Brugge",
+      "team2": "Atlético de Madrid",
+      "leg1_score1": 3,
+      "leg1_score2": 3,
+      "leg2_score1": 1,
+      "leg2_score2": 4,
+      "aggregate1": 4,
+      "aggregate2": 7,
+      "winner": "Atlético de Madrid"
+    },
+    {
+      "team1": "Bodø/Glimt",
+      "team2": "Inter",
+      "leg1_score1": 3,
+      "leg1_score2": 1,
+      "leg2_score1": 2,
+      "leg2_score2": 1,
+      "aggregate1": 5,
+      "aggregate2": 2,
+      "winner": "Bodø/Glimt"
+    },
+    {
+      "team1": "Olympiacos",
+      "team2": "Bayer Leverkusen",
+      "leg1_score1": 0,
+      "leg1_score2": 2,
+      "leg2_score1": 0,
+      "leg2_score2": 0,
+      "aggregate1": 0,
+      "aggregate2": 2,
+      "winner": "Bayer Leverkusen"
+    }
+  ],
+  "round_of_16": [
+    {
+      "team1": "Paris Saint-Germain",
+      "team2": "Chelsea",
+      "leg1_score1": 5,
+      "leg1_score2": 2,
+      "leg2_score1": 3,
+      "leg2_score2": 0,
+      "aggregate1": 8,
+      "aggregate2": 2,
+      "winner": "Paris Saint-Germain"
+    },
+    {
+      "team1": "Galatasaray",
+      "team2": "Liverpool",
+      "leg1_score1": 1,
+      "leg1_score2": 0,
+      "leg2_score1": 0,
+      "leg2_score2": 4,
+      "aggregate1": 1,
+      "aggregate2": 4,
+      "winner": "Liverpool"
+    },
+    {
+      "team1": "Real Madrid",
+      "team2": "Manchester City",
+      "leg1_score1": 3,
+      "leg1_score2": 0,
+      "leg2_score1": 2,
+      "leg2_score2": 1,
+      "aggregate1": 5,
+      "aggregate2": 1,
+      "winner": "Real Madrid"
+    },
+    {
+      "team1": "Atalanta",
+      "team2": "Bayern München",
+      "leg1_score1": 1,
+      "leg1_score2": 6,
+      "leg2_score1": 1,
+      "leg2_score2": 4,
+      "aggregate1": 2,
+      "aggregate2": 10,
+      "winner": "Bayern München"
+    },
+    {
+      "team1": "Newcastle",
+      "team2": "Barcelona",
+      "leg1_score1": 1,
+      "leg1_score2": 1,
+      "leg2_score1": 2,
+      "leg2_score2": 7,
+      "aggregate1": 3,
+      "aggregate2": 8,
+      "winner": "Barcelona"
+    },
+    {
+      "team1": "Atlético de Madrid",
+      "team2": "Tottenham",
+      "leg1_score1": 5,
+      "leg1_score2": 2,
+      "leg2_score1": 2,
+      "leg2_score2": 3,
+      "aggregate1": 7,
+      "aggregate2": 5,
+      "winner": "Atlético de Madrid"
+    },
+    {
+      "team1": "Bodø/Glimt",
+      "team2": "Sporting CP",
+      "leg1_score1": 3,
+      "leg1_score2": 0,
+      "leg2_score1": 0,
+      "leg2_score2": 5,
+      "leg2_extra_time": true,
+      "aggregate1": 3,
+      "aggregate2": 5,
+      "winner": "Sporting CP"
+    },
+    {
+      "team1": "Bayer Leverkusen",
+      "team2": "Arsenal",
+      "leg1_score1": 1,
+      "leg1_score2": 1,
+      "leg2_score1": 0,
+      "leg2_score2": 2,
+      "aggregate1": 1,
+      "aggregate2": 3,
+      "winner": "Arsenal"
+    }
+  ],
+  "quarterfinals": [
+    {
+      "team1": "Paris Saint-Germain",
+      "team2": "Liverpool",
+      "leg1_score1": 2,
+      "leg1_score2": 0,
+      "leg2_score1": 2,
+      "leg2_score2": 0,
+      "aggregate1": 4,
+      "aggregate2": 0,
+      "winner": "Paris Saint-Germain"
+    },
+    {
+      "team1": "Real Madrid",
+      "team2": "Bayern München",
+      "leg1_score1": 1,
+      "leg1_score2": 2,
+      "leg2_score1": 3,
+      "leg2_score2": 4,
+      "aggregate1": 4,
+      "aggregate2": 6,
+      "winner": "Bayern München"
+    },
+    {
+      "team1": "Barcelona",
+      "team2": "Atlético de Madrid",
+      "leg1_score1": 0,
+      "leg1_score2": 2,
+      "leg2_score1": 2,
+      "leg2_score2": 1,
+      "aggregate1": 2,
+      "aggregate2": 3,
+      "winner": "Atlético de Madrid"
+    },
+    {
+      "team1": "Sporting CP",
+      "team2": "Arsenal",
+      "leg1_score1": 0,
+      "leg1_score2": 1,
+      "leg2_score1": 0,
+      "leg2_score2": 0,
+      "aggregate1": 0,
+      "aggregate2": 1,
+      "winner": "Arsenal"
+    }
+  ],
+  "semifinals": [
+    {
+      "team1": "Paris Saint-Germain",
+      "team2": "Bayern München",
+      "leg1_score1": null,
+      "leg1_score2": null,
+      "leg2_score1": null,
+      "leg2_score2": null,
+      "aggregate1": null,
+      "aggregate2": null,
+      "winner": null,
+      "status": "scheduled"
+    },
+    {
+      "team1": "Atlético de Madrid",
+      "team2": "Arsenal",
+      "leg1_score1": null,
+      "leg1_score2": null,
+      "leg2_score1": null,
+      "leg2_score2": null,
+      "aggregate1": null,
+      "aggregate2": null,
+      "winner": null,
+      "status": "scheduled"
+    }
+  ],
+  "final": [
+    {
+      "team1": null,
+      "team2": null,
+      "date": "2026-05-30",
+      "venue": "Puskás Aréna, Budapest",
+      "status": "scheduled"
+    }
+  ]
+}

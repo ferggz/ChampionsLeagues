@@ -135,17 +135,131 @@ th[data-column]::after {
     content: "⇅";
     font-size: 10px;
     margin-left: 5px;
-    opacity: 0.5;
-}
-
-th[data-column]::after {
-    content: "⇅";
-    font-size: 10px;
-    margin-left: 5px;
     opacity: 0;
     transition: opacity 0.2s;
 }
 
 th[data-column]:hover::after {
     opacity: 0.7;
+}
+
+.top-nav {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.top-nav a {
+    padding: 8px 12px;
+    background-color: #111;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.top-nav a:hover {
+    background-color: #333;
+}
+
+.bracket-container {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    overflow-x: auto;
+    padding: 30px;
+    width: max-content;
+}
+
+.round {
+    min-width: 230px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.round h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.match-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    position: relative;
+}
+
+.match-card::after {
+    content: "";
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    width: 20px;
+    height: 2px;
+    background-color: #999;
+}
+
+.team {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 10px;
+    border-radius: 6px;
+    margin: 6px 0;
+    background-color: #f3f3f3;
+}
+
+.winner {
+    background-color: #d4edda;
+    font-weight: bold;
+}
+
+.final-card {
+    text-align: left;
+}
+
+.playoffs-round .match-card {
+    margin-bottom: 14px;
+}
+
+.round16-round .match-card {
+    margin-bottom: 48px;
+    margin-top: 28px;
+}
+
+.quarterfinals-round .match-card {
+    margin-bottom: 120px;
+    margin-top: 85px;
+}
+
+.semifinals-round .match-card {
+    margin-bottom: 260px;
+    margin-top: 190px;
+}
+
+.final-round .match-card {
+    margin-top: 320px;
+}
+
+.final-round .match-card::after {
+    display: none;
+}
+
+.match-card::before {
+    content: "";
+    position: absolute;
+    right: -20px;
+    top: 25%;
+    width: 2px;
+    height: 50%;
+    background-color: #999;
+}
+
+.final-round .match-card::before,
+.final-round .match-card::after {
+    display: none;
 }

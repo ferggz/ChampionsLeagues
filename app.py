@@ -37,5 +37,14 @@ def team(team_id):
     
     return "Equipo no encontrado"
 
+def load_knockout():
+    with open("knockout.json", encoding="utf-8") as f:
+        return json.load(f)
+
+@app.route("/knockout")
+def knockout():
+    data = load_knockout()
+    return render_template("knockout.html", data=data)
+
 if __name__ == "__main__":
     app.run(debug=True)
