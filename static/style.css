@@ -162,6 +162,9 @@ th[data-column]:hover::after {
     background-color: #333;
 }
 
+
+
+
 .bracket-container {
     display: flex;
     gap: 24px;
@@ -191,6 +194,32 @@ th[data-column]:hover::after {
     padding: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     position: relative;
+    width: 260px;
+    box-sizing: border-box;
+}
+
+.match-details {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #ddd;
+    font-size: 12px;
+    color: #555;
+    text-align: left;
+    min-height: 44px;
+}
+
+.match-details p {
+    margin: 3px 0;
+}
+
+.match-card::before {
+    content: "";
+    position: absolute;
+    right: -20px;
+    top: 30%;
+    width: 3px;
+    height: 40%;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .match-card::after {
@@ -199,8 +228,8 @@ th[data-column]:hover::after {
     right: -40px;
     top: 50%;
     width: 20px;
-    height: 2px;
-    background-color: #999;
+    height: 3px;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .team {
@@ -220,46 +249,50 @@ th[data-column]:hover::after {
 
 .final-card {
     text-align: left;
+    min-height: 120px;
 }
 
-.playoffs-round .match-card {
-    margin-bottom: 14px;
-}
-
-.round16-round .match-card {
-    margin-bottom: 48px;
-    margin-top: 28px;
-}
-
-.quarterfinals-round .match-card {
-    margin-bottom: 120px;
-    margin-top: 85px;
-}
-
-.semifinals-round .match-card {
-    margin-bottom: 260px;
-    margin-top: 190px;
-}
-
-.final-round .match-card {
-    margin-top: 320px;
-}
-
-.final-round .match-card::after {
-    display: none;
-}
-
-.match-card::before {
-    content: "";
-    position: absolute;
-    right: -20px;
-    top: 25%;
-    width: 2px;
-    height: 50%;
-    background-color: #999;
+.round {
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: column;
+    justify-content: space-around;
+    min-width: 280px;
 }
 
 .final-round .match-card::before,
 .final-round .match-card::after {
     display: none;
+}
+
+.playoffs-round,
+.round16-round,
+.quarterfinals-round,
+.semifinals-round,
+.final-round {
+    gap: 18px;
+}
+
+.quarterfinals-round {
+    padding-top: 70px;
+}
+
+.semifinals-round {
+    padding-top: 170px;
+}
+
+.final-round {
+    padding-top: 170px;
+}
+
+.team-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.team-logo-small {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
 }

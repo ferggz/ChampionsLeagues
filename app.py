@@ -7,6 +7,10 @@ def load_teams():
     with open("teams.json", encoding="utf-8") as f:
         return json.load(f)
 
+def get_team_logos():
+    teams = load_teams()
+    return {team["name"]: team["logo"] for team in teams}
+
 @app.route("/")
 def home():
     teams = load_teams()
@@ -44,6 +48,15 @@ def load_knockout():
 @app.route("/knockout")
 def knockout():
     data = load_knockout()
+    team_logos = get_team_logos()
+
+    for round_matches in data.values():
+        for match in round_matches:
+            if match.get("team1"):
+                match["logo1"] = team_logos.get(match["team1"], "default.png")
+            if match.get("team2"):
+                match["logo2"] = team_logos.get(match["team2"], "default.png")
+
     return render_template("knockout.html", data=data)
 
 if __name__ == "__main__":

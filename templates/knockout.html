@@ -13,82 +13,159 @@
 
     <h1>Fase eliminatoria</h1>
 
-<div class="bracket-container">
+    <div class="bracket-container">
 
-    <div class="round playoffs-round">
-        <h2>Playoffs</h2>
-        {% for match in data.playoffs %}
-            <div class="match-card">
-                <div class="team {% if match.winner == match.team1 %}winner{% endif %}">
-                    <span>{{ match.team1 }}</span>
-                    <span>{{ match.aggregate1 }}</span>
+        <div class="round playoffs-round">
+            <h2>Playoffs</h2>
+            {% for match in data.playoffs %}
+                <div class="match-card">
+                    <div class="team {% if match.winner == match.team1 %}winner{% endif %}">
+                        <span class="team-info">
+                            <img src="/static/logos/{{ match.logo1 }}" alt="{{ match.team1 }} logo" class="team-logo-small">
+                            {{ match.team1 }}
+                        </span>
+                        <span>{{ match.aggregate1 }}</span>
+                    </div>
+                    <div class="team {% if match.winner == match.team2 %}winner{% endif %}">
+                        <span class="team-info">
+                            <img src="/static/logos/{{ match.logo2 }}" alt="{{ match.team2 }} logo" class="team-logo-small">
+                            {{ match.team2 }}
+                        </span>
+                        <span>{{ match.aggregate2 }}</span>
+                    </div>
+
+                    <div class="match-details">
+                        <p>Ida: {{ match.leg1_score1 }} - {{ match.leg1_score2 }}</p>
+                        <p>Vuelta: {{ match.leg2_score1 }} - {{ match.leg2_score2 }}</p>
+                        {% if match.leg2_extra_time %}
+                            <p>Prórroga</p>
+                        {% endif %}
+                    </div>
                 </div>
-                <div class="team {% if match.winner == match.team2 %}winner{% endif %}">
-                    <span>{{ match.team2 }}</span>
-                    <span>{{ match.aggregate2 }}</span>
+            {% endfor %}
+        </div>
+
+        <div class="round round16-round">
+            <h2>Octavos</h2>
+            {% for match in data.round_of_16 %}
+                <div class="match-card">
+                    <div class="team {% if match.winner == match.team1 %}winner{% endif %}">
+                        <span class="team-info">
+                            <img src="/static/logos/{{ match.logo1 }}" alt="{{ match.team1 }} logo" class="team-logo-small">
+                            {{ match.team1 }}
+                        </span>
+                        <span>{{ match.aggregate1 }}</span>
+                    </div>
+                    <div class="team {% if match.winner == match.team2 %}winner{% endif %}">
+                        <span class="team-info">
+                            <img src="/static/logos/{{ match.logo2 }}" alt="{{ match.team2 }} logo" class="team-logo-small">
+                            {{ match.team2 }}
+                        </span>
+                        <span>{{ match.aggregate2 }}</span>
+                    </div>
+
+                    <div class="match-details">
+                        <p>Ida: {{ match.leg1_score1 }} - {{ match.leg1_score2 }}</p>
+                        <p>Vuelta: {{ match.leg2_score1 }} - {{ match.leg2_score2 }}</p>
+                        {% if match.leg2_extra_time %}
+                            <p>Prórroga</p>
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
+
+        <div class="round quarterfinals-round">
+            <h2>Cuartos</h2>
+            {% for match in data.quarterfinals %}
+                <div class="match-card">
+                    <div class="team {% if match.winner == match.team1 %}winner{% endif %}">
+                        <span class="team-info">
+                            <img src="/static/logos/{{ match.logo1 }}" alt="{{ match.team1 }} logo" class="team-logo-small">
+                            {{ match.team1 }}
+                        </span>
+                        <span>{{ match.aggregate1 }}</span>
+                    </div>
+                    <div class="team {% if match.winner == match.team2 %}winner{% endif %}">
+                        <span class="team-info">
+                            <img src="/static/logos/{{ match.logo2 }}" alt="{{ match.team2 }} logo" class="team-logo-small">
+                            {{ match.team2 }}
+                        </span>
+                        <span>{{ match.aggregate2 }}</span>
+                    </div>
+
+                    <div class="match-details">
+                        <p>Ida: {{ match.leg1_score1 }} - {{ match.leg1_score2 }}</p>
+                        <p>Vuelta: {{ match.leg2_score1 }} - {{ match.leg2_score2 }}</p>
+                        {% if match.leg2_extra_time %}
+                            <p>Prórroga</p>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="round semifinals-round">
+            <h2>Semifinales</h2>
+            {% for match in data.semifinals %}
+                <div class="match-card">
+                    <div class="team {% if match.winner == match.team1 %}winner{% endif %}">
+                        <span class="team-info">
+                            <img src="/static/logos/{{ match.logo1 }}" alt="{{ match.team1 }} logo" class="team-logo-small">
+                            {{ match.team1 }}
+                        </span>
+                        <span>
+                            {% if match.aggregate1 is not none %}
+                                {{ match.aggregate1 }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </span>
+                    </div>
+                    <div class="team {% if match.winner == match.team2 %}winner{% endif %}">
+                        <span class="team-info">
+                            <img src="/static/logos/{{ match.logo2 }}" alt="{{ match.team2 }} logo" class="team-logo-small">
+                            {{ match.team2 }}
+                        </span>
+                        <span>
+                            {% if match.aggregate2 is not none %}
+                                {{ match.aggregate2 }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </span>
+                    </div>
+
+                    {% if match.leg1_score1 is not none %}
+                        <div class="match-details">
+                            <p>Ida: {{ match.leg1_score1 }} - {{ match.leg1_score2 }}</p>
+                            <p>Vuelta: {{ match.leg2_score1 }} - {{ match.leg2_score2 }}</p>
+                            {% if match.leg2_extra_time %}
+                                <p>Prórroga</p>
+                            {% endif %}
+                        </div>
+                    {% else %}
+                        <div class="match-details">
+                            <p>Por jugar</p>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="round final-round">
+            <h2>Final</h2>
+            {% for match in data.final %}
+                <div class="match-card final-card">
+                    <p><strong>Fecha:</strong> {{ match.date }}</p>
+                    <p><strong>Sede:</strong> {{ match.venue }}</p>
+                    <p><strong>Equipo 1:</strong> {% if match.team1 %}{{ match.team1 }}{% else %}Por definir{% endif %}</p>
+                    <p><strong>Equipo 2:</strong> {% if match.team2 %}{{ match.team2 }}{% else %}Por definir{% endif %}</p>
+                </div>
+            {% endfor %}
+        </div>
+
     </div>
 
-    <div class="round round16-round">
-        <h2>Octavos</h2>
-        {% for match in data.round_of_16 %}
-            <div class="match-card">
-                <div class="team {% if match.winner == match.team1 %}winner{% endif %}">
-                    <span>{{ match.team1 }}</span>
-                    <span>{{ match.aggregate1 }}</span>
-                </div>
-                <div class="team {% if match.winner == match.team2 %}winner{% endif %}">
-                    <span>{{ match.team2 }}</span>
-                    <span>{{ match.aggregate2 }}</span>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-
-    <div class="round quarterfinals-round">
-        <h2>Cuartos</h2>
-        {% for match in data.quarterfinals %}
-            <div class="match-card">
-                <div class="team {% if match.winner == match.team1 %}winner{% endif %}">
-                    <span>{{ match.team1 }}</span>
-                    <span>{{ match.aggregate1 }}</span>
-                </div>
-                <div class="team {% if match.winner == match.team2 %}winner{% endif %}">
-                    <span>{{ match.team2 }}</span>
-                    <span>{{ match.aggregate2 }}</span>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-
-    <div class="round semifinals-round">
-        <h2>Semifinales</h2>
-        {% for match in data.semifinals %}
-            <div class="match-card">
-                <div class="team {% if match.winner == match.team1 %}winner{% endif %}">
-                    <span>{{ match.team1 }}</span>
-                    <span>{% if match.aggregate1 is not none %}{{ match.aggregate1 }}{% else %}-{% endif %}</span>
-                </div>
-                <div class="team {% if match.winner == match.team2 %}winner{% endif %}">
-                    <span>{{ match.team2 }}</span>
-                    <span>{% if match.aggregate2 is not none %}{{ match.aggregate2 }}{% else %}-{% endif %}</span>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-
-    <div class="round final-round">
-        <h2>Final</h2>
-        {% for match in data.final %}
-            <div class="match-card final-card">
-                <p><strong>Fecha:</strong> {{ match.date }}</p>
-                <p><strong>Sede:</strong> {{ match.venue }}</p>
-                <p><strong>Equipo 1:</strong> {% if match.team1 %}{{ match.team1 }}{% else %}Por definir{% endif %}</p>
-                <p><strong>Equipo 2:</strong> {% if match.team2 %}{{ match.team2 }}{% else %}Por definir{% endif %}</p>
-            </div>
-        {% endfor %}
-    </div>
-
-</div>
+</body>
+</html>
