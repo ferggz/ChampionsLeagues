@@ -62,7 +62,7 @@ def team(team_id):
         if t["id"] == team_id:
             return render_template("team.html", team=t)
     
-    return "Equipo no encontrado"
+    return "Equipo no encontrado", 404
 
 def load_knockout():
     with open("knockout.json", encoding="utf-8") as f:
