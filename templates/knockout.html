@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Champions League - Fase eliminatoria</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
+
 <body>
 
     <div class="top-nav">
@@ -13,66 +15,89 @@
 
     <h1>Fase eliminatoria</h1>
 
-<div class="bracket-container">
+    <div class="bracket-container">
 
-    {% set rounds = [
+        {% set rounds = [
         ("playoffs", "Playoffs", "playoffs-round"),
         ("round_of_16", "Octavos", "round16-round"),
         ("quarterfinals", "Cuartos", "quarterfinals-round"),
         ("semifinals", "Semifinales", "semifinals-round"),
         ("final", "Final", "final-round")
-    ] %}
+        ] %}
 
-    {% for round_key, round_title, round_class in rounds %}
+        {% for round_key, round_title, round_class in rounds %}
         <div class="round {{ round_class }}">
             <h2>{{ round_title }}</h2>
 
             {% for match in data[round_key] %}
-                <div class="match-card {% if round_key == 'final' %}final-card{% endif %}">
+            <div class="match-card {% if round_key == 'final' %}final-card{% endif %}">
 
-                    {% if round_key == "final" %}
-                        <p><strong>Fecha:</strong> {{ match.date }}</p>
-                        <p><strong>Sede:</strong> {{ match.venue }}</p>
-                        <p><strong>Equipo 1:</strong> {{ match.team1 if match.team1 else "Por definir" }}</p>
-                        <p><strong>Equipo 2:</strong> {{ match.team2 if match.team2 else "Por definir" }}</p>
+                {% if round_key == "final" %}
+                <p><strong>Fecha:</strong> {{ match.date }}</p>
+                <p><strong>Sede:</strong> {{ match.venue }}</p>
 
-                    {% else %}
-                        <div class="team {% if match.winner == match.team1 %}winner{% endif %}">
-                            <span class="team-info">
-                                <img src="/static/logos/{{ match.logo1 }}" alt="{{ match.team1 }} logo" class="team-logo-small">
-                                <a href="/team/{{ match.id1 }}">{{ match.team1 }}</a>
-                            </span>
-                            <span>{{ match.aggregate1 if match.aggregate1 is not none else "-" }}</span>
-                        </div>
-
-                        <div class="team {% if match.winner == match.team2 %}winner{% endif %}">
-                            <span class="team-info">
-                                <img src="/static/logos/{{ match.logo2 }}" alt="{{ match.team2 }} logo" class="team-logo-small">
-                                <a href="/team/{{ match.id2 }}">{{ match.team2 }}</a>
-                            </span>
-                            <span>{{ match.aggregate2 if match.aggregate2 is not none else "-" }}</span>
-                        </div>
-
-                        <div class="match-details">
-                            {% if match.leg1_score1 is not none %}
-                                <p>Ida: {{ match.leg1_score1 }} - {{ match.leg1_score2 }}</p>
-                                <p>Vuelta: {{ match.leg2_score1 }} - {{ match.leg2_score2 }}</p>
-
-                                {% if match.leg2_extra_time %}
-                                    <p>Prórroga</p>
-                                {% endif %}
-                            {% else %}
-                                <p>Por jugar</p>
-                            {% endif %}
-                        </div>
-                    {% endif %}
-
+                <div class="team">
+                    <span class="team-info">
+                        {% if match.logo1 %}
+                        <img src="/static/logos/{{ match.logo1 }}" class="team-logo-small" alt="{{ match.team1 }} logo">
+                        {% endif %}
+                        {{ match.team1 if match.team1 else "Por definir" }}
+                    </span>
                 </div>
+
+                <div class="team">
+                    <span class="team-info">
+                        {% if match.logo2 %}
+                        <img src="/static/logos/{{ match.logo2 }}" class="team-logo-small" alt="{{ match.team2 }} logo">
+                        {% endif %}
+                        {{ match.team2 if match.team2 else "Por definir" }}
+                    </span>
+                </div>
+
+                {% if match.winner %}
+                <div class="champion-box">
+                    🏆 Campeón: {{ match.winner }}
+                </div>
+                {% endif %}
+
+                {% else %}
+                <div class="team {% if match.winner == match.team1 %}winner{% endif %}">
+                    <span class="team-info">
+                        <img src="/static/logos/{{ match.logo1 }}" class="team-logo-small" alt="{{ match.team1 }} logo">
+                        <a href="/team/{{ match.id1 }}">{{ match.team1 }}</a>
+                    </span>
+                    <span>{{ match.aggregate1 if match.aggregate1 is not none else "-" }}</span>
+                </div>
+
+                <div class="team {% if match.winner == match.team2 %}winner{% endif %}">
+                    <span class="team-info">
+                        <img src="/static/logos/{{ match.logo2 }}" class="team-logo-small" alt="{{ match.team2 }} logo">
+                        <a href="/team/{{ match.id2 }}">{{ match.team2 }}</a>
+                    </span>
+                    <span>{{ match.aggregate2 if match.aggregate2 is not none else "-" }}</span>
+                </div>
+
+                <div class="match-details">
+                    {% if match.leg1_score1 is not none %}
+                    <p>Ida: {{ match.leg1_score1 }} - {{ match.leg1_score2 }}</p>
+                    <p>Vuelta: {{ match.leg2_score1 }} - {{ match.leg2_score2 }}</p>
+
+                    {% if match.leg2_extra_time %}
+                    <p>Prórroga</p>
+                    {% endif %}
+                    {% else %}
+                    <p>Por jugar</p>
+                    {% endif %}
+                </div>
+                {% endif %}
+
+            </div>
             {% endfor %}
         </div>
-    {% endfor %}
+        {% endfor %}
 
-</div>
+    </div>
 
 </body>
+
 </html>

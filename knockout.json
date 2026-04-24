@@ -257,6 +257,9 @@
     {
       "team1": null,
       "team2": null,
+      "score1": null,
+      "score2": null,
+      "winner": null,
       "date": "2026-05-30",
       "venue": "Puskás Aréna, Budapest",
       "status": "scheduled"

@@ -12,7 +12,7 @@ h1 {
 table {
     margin: 40px auto;
     border-collapse: collapse;
-    width: 85%;
+    width: 86%;
     background-color: white;
     border-radius: 8px;
     overflow: hidden;
@@ -21,12 +21,59 @@ table {
 th {
     background-color: #111;
     color: white;
-    padding: 12px;
+    padding: 8px;
 }
 
 td {
-    padding: 12px;
+    padding: 8px;
     border-bottom: 1px solid #ddd;
+}
+
+.compact-button {
+    margin-top: 15px;
+    padding: 8px 12px;
+    background-color: #111;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.compact-button:hover {
+    background-color: #333;
+}
+
+table.compact {
+    font-size: 13px;
+}
+
+table.compact td {
+    padding: 4px 8px;
+    line-height: 1.2;
+}
+
+table.compact th {
+    padding: 4px;
+    line-height: 1.2;
+}
+
+table.compact .team-logo {
+    width: 24px;
+    height: 24px;
+}
+
+table.compact .team-link img {
+    width: 24px;
+    height: 24px;
+}
+
+.table-controls {
+    width: 85%;
+    margin: 20px auto 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
 }
 
 tr:hover {
@@ -37,6 +84,7 @@ a {
     text-decoration: none;
     color: black;
     font-weight: bold;
+    transition: color 0.2s;
 }
 
 a:hover {
@@ -50,8 +98,9 @@ a:hover {
 }
 
 .team-logo {
-    width: 24px;
-    height: 24px;
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
 }
 
 .team-logo-large {
@@ -160,10 +209,13 @@ th[data-column]:hover::after {
 
 .top-nav a {
     padding: 8px 12px;
+    width: 160px;
+    display: inline-block;
     background-color: #111;
     color: white;
     border-radius: 6px;
     text-decoration: none;
+    text-align: center;
 }
 
 .top-nav a:hover {
@@ -240,6 +292,20 @@ th[data-column]:hover::after {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 14px;
+    background-color: #111;
+    color: white;
+    border-radius: 6px;
+}
+
+.back-button:hover {
+    background-color: #333;
+    color: white;
+}
+
 .team {
     display: flex;
     justify-content: space-between;
@@ -296,6 +362,15 @@ th[data-column]:hover::after {
 
 .final-round {
     padding-top: 170px;
+}
+
+.champion-box {
+    margin-top: 12px;
+    padding: 10px;
+    background-color: #fff3cd;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
 }
 
 .team-info {

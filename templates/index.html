@@ -18,6 +18,10 @@
         <a href="/knockout">Fase eliminatoria</a>
     </div>
 
+    <div class="table-controls">
+        <button id="compactButton" class="compact-button">Compactar tabla</button>
+    </div>
+
     <table>
         <tr>
             <th data-column="position">Pos</th>
@@ -45,7 +49,7 @@
             <td>{{ loop.index }}</td>
             <td>
                <a href="/team/{{ team.id }}" class="team-link">
-                <img src="/static/logos/{{ team.logo }}" alt="{{ team.name }} logo" class="team-logo">
+                <img src="/static/logos/{{ team.logo }}" class="team-logo-large" alt="{{ team.name }} logo">
                 <span>{{ team.name }}</span>
                 </a>
             </td>
@@ -71,6 +75,7 @@
     const searchInput = document.getElementById("searchInput");
     const noResults = document.getElementById("noResults");
     const table = document.querySelector("table");
+    const compactButton = document.getElementById("compactButton");
     const headers = document.querySelectorAll("th[data-column]");
 
     let sortDirection = {};
@@ -122,6 +127,16 @@
 
         return parseInt(row.cells[columnIndex[column]].textContent);
     }
+
+    compactButton.addEventListener("click", function () {
+        table.classList.toggle("compact");
+
+        if (table.classList.contains("compact")) {
+            compactButton.textContent = "Expandir tabla";
+        } else {
+            compactButton.textContent = "Compactar tabla";
+        }
+    });
 
     headers.forEach(function (header) {
         header.addEventListener("click", function () {
