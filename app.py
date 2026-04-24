@@ -11,6 +11,29 @@ def get_team_logos():
     teams = load_teams()
     return {team["name"]: team["logo"] for team in teams}
 
+def generate_semifinals(data):
+    quarterfinals = data["quarterfinals"]
+
+    data["semifinals"][0]["team1"] = quarterfinals[0]["winner"]
+    data["semifinals"][0]["team2"] = quarterfinals[1]["winner"]
+
+    data["semifinals"][1]["team1"] = quarterfinals[2]["winner"]
+    data["semifinals"][1]["team2"] = quarterfinals[3]["winner"]
+
+    return data
+
+def generate_final(data):
+    semifinals = data["semifinals"]
+
+    data["final"][0]["team1"] = semifinals[0]["winner"]
+    data["final"][0]["team2"] = semifinals[1]["winner"]
+
+    return data
+
+def get_team_ids():
+    teams = load_teams()
+    return {team["name"]: team["id"] for team in teams}
+
 @app.route("/")
 def home():
     teams = load_teams()
@@ -48,14 +71,22 @@ def load_knockout():
 @app.route("/knockout")
 def knockout():
     data = load_knockout()
+
+    data = generate_semifinals(data)
+    data = generate_final(data)
+
     team_logos = get_team_logos()
+    team_ids = get_team_ids()
 
     for round_matches in data.values():
         for match in round_matches:
             if match.get("team1"):
                 match["logo1"] = team_logos.get(match["team1"], "default.png")
+                match["id1"] = team_ids.get(match["team1"])
+
             if match.get("team2"):
                 match["logo2"] = team_logos.get(match["team2"], "default.png")
+                match["id2"] = team_ids.get(match["team2"])
 
     return render_template("knockout.html", data=data)
 

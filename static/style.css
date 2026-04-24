@@ -60,6 +60,14 @@ a:hover {
     margin-bottom: 20px;
 }
 
+.team-card {
+    background: white;
+    width: 320px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+}
+
 .search-box {
     margin-top: 20px;
 }
@@ -240,6 +248,11 @@ th[data-column]:hover::after {
     border-radius: 6px;
     margin: 6px 0;
     background-color: #f3f3f3;
+    transition: background-color 0.2s;
+}
+
+.team:hover {
+    background-color: #e9f2ff;
 }
 
 .winner {
@@ -289,6 +302,15 @@ th[data-column]:hover::after {
     display: flex;
     align-items: center;
     gap: 8px;
+}
+
+.team-info a {
+    text-decoration: none;
+    color: black;
+}
+
+.team-info a:hover {
+    color: #007BFF;
 }
 
 .team-logo-small {
