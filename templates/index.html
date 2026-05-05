@@ -1,69 +1,67 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Champions</title>
-    <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
+{% extends "base.html" %}
 
-    <h1>Clasificación</h1>
+{% block title %}Clasificación - ChampionsLeagues{% endblock %}
 
-    <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Buscar equipo...">
-    </div>
-    <p id="noResults" style="display: none;">No se encontraron equipos</p>
+{% block content %}
 
-    <div class="top-nav">
-        <a href="/">Fase de liga</a>
-        <a href="/knockout">Fase eliminatoria</a>
-    </div>
+<h1>Clasificación</h1>
 
-    <div class="table-controls">
-        <button id="compactButton" class="compact-button">Compactar tabla</button>
-    </div>
+<div class="search-box">
+    <input type="text" id="searchInput" placeholder="Buscar equipo...">
+</div>
+<p id="noResults" style="display: none;">No se encontraron equipos</p>
 
-    <table>
-        <tr>
-            <th data-column="position">Pos</th>
-            <th>Equipo</th>
-            <th data-column="pj">PJ</th>
-            <th data-column="pg">PG</th>
-            <th data-column="pe">PE</th>
-            <th data-column="pp">PP</th>
-            <th data-column="gf">GF</th>
-            <th data-column="ga">GC</th>
-            <th data-column="dg">DG</th>
-            <th>Pts</th>
-        </tr>
+<div class="top-nav">
+    <a href="{{ url_for('home') }}">Fase de liga</a>
+    <a href="{{ url_for('knockout') }}">Fase eliminatoria</a>
+</div>
 
-       {% for team in teams %} 
-       <tr class="team-row
-            {% if loop.index <= 8 %}
-                qualified-octavos
-            {% elif loop.index <= 24 %}
-                qualified-playoff
-            {% else %}
-                eliminated
-            {% endif %}
-        ">
-            <td>{{ loop.index }}</td>
-            <td>
-               <a href="/team/{{ team.id }}" class="team-link">
-                <img src="/static/logos/{{ team.logo }}" class="team-logo-large" alt="{{ team.name }} logo">
+<div class="table-controls">
+    <button id="compactButton" class="compact-button">Compactar tabla</button>
+</div>
+
+<table>
+    <tr>
+        <th data-column="position">Pos</th>
+        <th>Equipo</th>
+        <th data-column="pj">PJ</th>
+        <th data-column="pg">PG</th>
+        <th data-column="pe">PE</th>
+        <th data-column="pp">PP</th>
+        <th data-column="gf">GF</th>
+        <th data-column="ga">GC</th>
+        <th data-column="dg">DG</th>
+        <th>Pts</th>
+    </tr>
+
+    {% for team in teams %}
+    <tr class="team-row
+        {% if loop.index <= 8 %}
+            qualified-octavos
+        {% elif loop.index <= 24 %}
+            qualified-playoff
+        {% else %}
+            eliminated
+        {% endif %}
+    ">
+        <td>{{ loop.index }}</td>
+        <td>
+            <a href="{{ url_for('team', team_id=team.id) }}" class="team-link">
+                <img src="{{ url_for('static', filename='logos/' + team.logo) }}" class="team-logo-large" alt="{{ team.name }} logo">
                 <span>{{ team.name }}</span>
-                </a>
-            </td>
-            <td>{{ team.pj }}</td>
-            <td>{{ team.pg }}</td>
-            <td>{{ team.pe }}</td>
-            <td>{{ team.pp }}</td>
-            <td>{{ team.gf }}</td>
-            <td>{{ team.ga }}</td>
-            <td>{{ team.gf - team.ga }}</td>
-            <td>{{ team.points }}</td>
-       </tr>
-       {% endfor %}
-    </table>
+            </a>
+        </td>
+        <td>{{ team.pj }}</td>
+        <td>{{ team.pg }}</td>
+        <td>{{ team.pe }}</td>
+        <td>{{ team.pp }}</td>
+        <td>{{ team.gf }}</td>
+        <td>{{ team.ga }}</td>
+        <td>{{ team.gf - team.ga }}</td>
+        <td>{{ team.points }}</td>
+    </tr>
+    {% endfor %}
+</table>
 
 <div class="legend">
     <p><span class="box octavos"></span> Octavos</p>
@@ -71,101 +69,8 @@
     <p><span class="box out"></span> Eliminado</p>
 </div>
 
-<script>
-    const searchInput = document.getElementById("searchInput");
-    const noResults = document.getElementById("noResults");
-    const table = document.querySelector("table");
-    const compactButton = document.getElementById("compactButton");
-    const headers = document.querySelectorAll("th[data-column]");
+{% endblock %}
 
-    let sortDirection = {};
-
-    function normalize(text) {
-        return text
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .replace(/\s+/g, "");
-    }
-
-    function getRows() {
-        return Array.from(document.querySelectorAll(".team-row"));
-    }
-
-    function filterRows() {
-        const rows = getRows();
-        const searchText = normalize(searchInput.value);
-        let visibleCount = 0;
-
-        rows.forEach(function (row) {
-            const teamName = normalize(
-                row.querySelector(".team-link span").textContent
-            );
-
-            if (teamName.includes(searchText)) {
-                row.style.display = "";
-                visibleCount++;
-            } else {
-                row.style.display = "none";
-            }
-        });
-
-        noResults.style.display = visibleCount === 0 ? "block" : "none";
-    }
-
-    function getCellValue(row, column) {
-        const columnIndex = {
-            position: 0,
-            pj: 2,
-            pg: 3,
-            pe: 4,
-            pp: 5,
-            gf: 6,
-            ga: 7,
-            dg: 8
-        };
-
-        return parseInt(row.cells[columnIndex[column]].textContent);
-    }
-
-    compactButton.addEventListener("click", function () {
-        table.classList.toggle("compact");
-
-        if (table.classList.contains("compact")) {
-            compactButton.textContent = "Expandir tabla";
-        } else {
-            compactButton.textContent = "Compactar tabla";
-        }
-    });
-
-    headers.forEach(function (header) {
-        header.addEventListener("click", function () {
-            const column = header.dataset.column;
-            const rows = getRows();
-
-            sortDirection[column] = !sortDirection[column];
-
-            rows.sort(function (a, b) {
-                const aValue = getCellValue(a, column);
-                const bValue = getCellValue(b, column);
-
-                if (sortDirection[column]) {
-                    return aValue - bValue;
-                } else {
-                    return bValue - aValue;
-                }
-            });
-
-            rows.forEach(function (row) {
-                table.appendChild(row);
-            });
-
-            filterRows();
-        });
-    });
-
-    searchInput.addEventListener("input", filterRows);
-</script>
-
-</body>
-</html>
+{% block scripts %}
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+{% endblock %}

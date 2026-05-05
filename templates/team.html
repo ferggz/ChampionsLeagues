@@ -1,28 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ team.name }}</title>
-    <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
+{% extends "base.html" %}
 
-    <h1>{{ team.name }}</h1>
-    <img src="/static/logos/{{ team.logo }}" class="team-logo-large">
+{% block title %}{{ team.name }} - ChampionsLeagues{% endblock %}
 
-    <div class="team-card">
-        <p><strong>PJ:</strong> {{ team.pj }}</p>
-        <p><strong>PG:</strong> {{ team.pg }}</p>
-        <p><strong>PE:</strong> {{ team.pe }}</p>
-        <p><strong>PP:</strong> {{ team.pp }}</p>
-        <p><strong>GF:</strong> {{ team.gf }}</p>
-        <p><strong>GC:</strong> {{ team.ga }}</p>
-        <p><strong>DG:</strong> {{ team.gf - team.ga }}</p>
-        <p><strong>Puntos:</strong> {{ team.points }}</p>
-    </div>
+{% block content %}
 
-    <br>
+<h1>{{ team.name }}</h1>
 
-    <a href="javascript:history.back()" class="back-button">Volver</a>
-    
-</body>
-</html>
+<img src="{{ url_for('static', filename='logos/' + team.logo) }}" 
+     class="team-logo-large" 
+     alt="{{ team.name }} logo">
+
+<div class="team-card">
+    <p><strong>PJ:</strong> {{ team.pj }}</p>
+    <p><strong>PG:</strong> {{ team.pg }}</p>
+    <p><strong>PE:</strong> {{ team.pe }}</p>
+    <p><strong>PP:</strong> {{ team.pp }}</p>
+    <p><strong>GF:</strong> {{ team.gf }}</p>
+    <p><strong>GC:</strong> {{ team.ga }}</p>
+    <p><strong>DG:</strong> {{ team.gf - team.ga }}</p>
+    <p><strong>Puntos:</strong> {{ team.points }}</p>
+</div>
+
+<br>
+
+<a href="javascript:history.back()" class="back-button">Volver</a>
+
+{% endblock %}
